@@ -6,7 +6,7 @@ export class Wallet {
   public readonly createdAt: Date;
   public updatedAt?: Date;
 
-  private constructor(
+  constructor(
     id: string,
     userId: string,
     type: WalletType,
