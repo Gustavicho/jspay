@@ -1,14 +1,16 @@
-import { Injectable } from '@nestjs/common';
-import { Wallet, WalletType } from './domain/Wallet';
-import IWalletRepository from './infra/WalletRepository.interface';
+import { Inject, Injectable } from '@nestjs/common';
+import { Wallet, WalletType } from './entities/wallet.entity';
+import IWalletRepository from './infra/repository/walletRepository.interface';
 
 @Injectable()
 export class WalletService {
     constructor(
+        @Inject('IWalletRepository')
         private readonly walletRepository: IWalletRepository,
     ) {
     }
 
+    
     async findWallet(walletId: string): Promise<Wallet> {
         const wallet = await this.walletRepository.getWalletById(walletId);
         if (!wallet)  throw new Error('Wallet not found');

@@ -1,4 +1,4 @@
-import { Wallet } from "../domain/Wallet";
+import { Wallet } from "../../entities/wallet.entity"
 
 export default interface IWalletRepository {
     getWalletByUserId(userId: string): Promise<Wallet>
